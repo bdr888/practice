@@ -5,13 +5,13 @@ import { Problem, Solution } from "../LeetCode";
 
 export default function ReverseArray() {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState<string[]>([]);
 
   function reverse() {
     // in place
-    const arr = input.split(", ");
+    const arr = input.split(",");
     const reveresedArray = arr.reverse();
-    setResult(reveresedArray.join(", "));
+    setResult(reveresedArray);
 
     // with a copy
     // const result = arr.split().reverse()
@@ -37,7 +37,7 @@ export default function ReverseArray() {
         description="Reverse the items in an array"
         result="An array with all the same items, but in reverse order"
       />
-      <Solution result={result}>
+      <Solution result={JSON.stringify(result, null, "\t")}>
         <form
           className="flex flex-col max-w-md"
           onSubmit={(e) => handleSubmit(e)}

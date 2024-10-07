@@ -4,7 +4,7 @@ import { Problem, Solution } from "../LeetCode";
 
 export default function UserNameValidation() {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState("False");
+  const [result, setResult] = useState(false);
 
   function validate() {
     const arr = input.split("");
@@ -15,7 +15,7 @@ export default function UserNameValidation() {
     const alphaNumeric = arr.every((char) => /^[a-zA-Z0-9_]+$/.test(char));
 
     const result = minMax && firstChar && lastChar && alphaNumeric;
-    return setResult(result ? "True" : "False");
+    return setResult(result);
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -43,7 +43,7 @@ export default function UserNameValidation() {
           <div>Input: "u__hello_world123" Output: true</div>
         </div>
       </Problem>
-      <Solution result={result}>
+      <Solution result={JSON.stringify(result, null, "\t")}>
         <form
           className="flex flex-col max-w-lg"
           onSubmit={(e) => handleSubmit(e)}

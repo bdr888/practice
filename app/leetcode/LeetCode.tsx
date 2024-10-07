@@ -43,11 +43,13 @@ export const Problem = ({
 
 export const Solution = ({ result, children }: SolutionProps) => {
   return (
-    <div className="p-4">
+    <div className="p-4 max-w-lg">
       <div className="font-semibold text-lg mb-2">Solution:</div>
       {children}
-      <div className="mt-4 mb-2 font-semibold text-lg">Result: </div>
-      {result}
+      <div className="mt-4 mb-2 font-semibold text-lg ">Result: </div>
+      {result ? (
+        <div className="bg-black text-white py-2 px-4 font-mono">{result}</div>
+      ) : null}
     </div>
   );
 };

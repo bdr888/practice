@@ -4,7 +4,7 @@ import { Problem, Solution } from "../LeetCode";
 
 export default function ArrayCountItems() {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState<string[]>([]);
 
   function validate() {
     const checkedOutBikes: { [key: string]: number } = {};
@@ -13,9 +13,9 @@ export default function ArrayCountItems() {
       .forEach(
         (item) => (checkedOutBikes[item] = (checkedOutBikes[item] || 0) + 1),
       );
-    const onlyOdd = Object.keys(checkedOutBikes)
-      .filter((item) => checkedOutBikes[item] % 2 !== 0)
-      .join();
+    const onlyOdd = Object.keys(checkedOutBikes).filter(
+      (item) => checkedOutBikes[item] % 2 !== 0,
+    );
 
     return setResult(onlyOdd);
   }
@@ -32,7 +32,7 @@ export default function ArrayCountItems() {
         description="For each id in the array, count the occurence, and if it is odd, return the id"
         result="Return a string, comma-delimited, of the id's of items that occur an odd number of times"
       />
-      <Solution result={result}>
+      <Solution result={JSON.stringify(result, null, "\t")}>
         <form
           className="flex flex-col max-w-md"
           onSubmit={(e) => handleSubmit(e)}
